@@ -80,3 +80,39 @@ const z = 3;
 console.log(x === window.x);
 console.log(y === window.y);
 console.log(z === window.z);
+
+// this keyword
+
+console.log(this);
+
+const calcAge2 = function (birthyear) {
+  console.log(2037 - birthyear);
+  console.log(this);
+};
+calcAge2(1991);
+
+const calcAgeArrow = birthyear => {
+  console.log(2037 - birthyear);
+  console.log(this);
+};
+calcAgeArrow(1980);
+
+const jonas = {
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+  },
+};
+jonas.calcAge(); 
+
+const matilda = {
+  year : 2017,
+}
+
+matilda.calcAge = jonas.calcAge;
+matilda.calcAge();
+
+const f = jonas.calcAge;
+// console.log(f);
+f(); 
